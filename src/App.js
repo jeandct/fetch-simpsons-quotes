@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import SimpsonQuote from './components/SimpsonQuote';
-import Loading from './Loading';
+import Loading from './components/Loading';
 
 class App extends Component {
   constructor(props) {
