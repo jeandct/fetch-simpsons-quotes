@@ -1,18 +1,13 @@
 import './App.css';
 import React, { Component } from 'react';
 import SimpsonQuote from './components/SimpsonQuote';
+import Loading from './Loading';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: {
-        quote:
-          'By chilling my loins I increase the chances of impregnating my wife.',
-        character: 'Apu Nahasapeemapetilon',
-        image:
-          'https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FApuNahasapeemapetilon.png?1497567511629',
-      },
+      quote: null,
     };
   }
 
@@ -26,10 +21,19 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    this.fetchQuote();
+  }
+
   render() {
     return (
       <div>
-        <SimpsonQuote quote={this.state.quote} />
+        {this.state.quote ? (
+          <SimpsonQuote quote={this.state.quote} />
+        ) : (
+          <Loading />
+        )}
+
         <button onClick={this.fetchQuote}>Get random quote</button>
       </div>
     );
